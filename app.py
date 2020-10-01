@@ -14,7 +14,7 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
 
 # Data source
-df = pd.read_csv("flights_complete_sample.csv")
+df = pd.read_csv('flights_complete_sample.csv')
 
 # Dict of colours
 colors = {

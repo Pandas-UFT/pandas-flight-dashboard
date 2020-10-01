@@ -10,7 +10,9 @@ A preview of our dashboard is displayed below.
 
 ### File Structure
 
-*
-*
-*
-*
+* .gitignore: A file of the files that should be ignored when uploading the local directory to the global GitHub repository. 
+* Procfile: A text file listing the process types for our dash app. 
+* README.md: A text file outlining our dashboard work. 
+* app.py: A Python file with our dash app code. 
+* flights_complete_sample.csv: A csv file with ten thousand rows of data as that is the limit available to deploy on Heroku.
+* requirements.txt: A text file of all the dependencies needed to run the app.py file. 

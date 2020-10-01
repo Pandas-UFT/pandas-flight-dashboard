@@ -1,7 +1,8 @@
 # Dashboard
 
-### Please checkout our Flight Delay Predictor Dashboard here: https://pandas-flight-dashboard.herokuapp.com/
+Dash was used to visualise our findings. A preview of our dashboard is displayed here
+![dash_preview](https://github.com/Pandas-UFT/Pandas/blob/master/figures/dash_preview.png?raw=true)
 
-Our dashboard has been built using Plotly Dash and will be deployed on Heroku.
+and the functional dashboard is deployed and available here on [Heroku](https://pandas-flight-dashboard.herokuapp.com/).
 
-![Dashboard_preview](https://github.com/Pandas-UFT/Pandas/blob/master/figures/dash_preview.png?raw=true)
+A quick video of the dashboard is also available for download [here](https://github.com/Pandas-UFT/Pandas/blob/master/dashboard/dashboard.mp4) on github.

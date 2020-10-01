@@ -7,3 +7,10 @@ A quick video of the dashboard is also available for download [here](https://git
 A preview of our dashboard is displayed below.
 
 ![dash_preview](https://github.com/Pandas-UFT/Pandas/blob/master/figures/dash_preview.png?raw=true)
+
+### File Structure
+
+*
+*
+*
+*

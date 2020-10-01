@@ -14,7 +14,7 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
 
 # Data source
-df = pd.read_csv('flights_sample.csv')
+df = pd.read_csv('flights_complete_sample.csv')
 
 # Dict of colours
 colors = {
@@ -62,16 +62,13 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
         id='delays',
         figure={
             'data': [
-                {'x':df['AIRLINE'], 'y': df['DEPARTURE_DELAY'], 'type':'box', 'name': 'Departure',
+                {'x':df['airline_name'], 'y': df['departure_delay'], 'type':'box', 'name': 'Departure',
                 'marker' : { "color" : colors['plot']}},
-                {'x':df['AIRLINE'], 'y': df['ARRIVAL_DELAY'], 'type':'box', 'name': 'Arrival',
+                {'x':df['airline_name'], 'y': df['arrival_delay'], 'type':'box', 'name': 'Arrival',
                 'marker' : { "color" : colors['plot2']}}
             ],
             'layout' : {
-                'title': 'Delays by Airline',
-                'xaxis': {
-                    'title':'Airline'
-                },
+                'title': 'Departure and Arrival Delays by Airline',
                 'yaxis':{
                     'title':'Delay in Minutes'
                 },
@@ -81,7 +78,9 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
                     'color': colors['text']
                 }
             }
-        }
+        },
+        style={'padding-left':'3%', 
+            'padding-right':'1%'}
     ),
 
 # Initial Analysis Images

@@ -27,7 +27,8 @@ colors = {
 }
 
 # Header
-app.layout = html.Div(style={'backgroundColor': colors['background']}, children=[
+app.layout = html.Div(style={'backgroundColor': colors['background'], 'padding-left':'3%', 
+            'padding-right':'3%'}, children=[
     html.Img(id= 'panda', src='https://image.shutterstock.com/image-vector/little-panda-super-hero-flies-260nw-650591155.jpg', style={'height':'10%', 'width':'10%', 'display':'inline-block'}),
     html.H1(
         children='Flying Pandas',
@@ -37,17 +38,16 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
             'display':'inline-block'
         }
     ),
-     html.H2(
+    html.H2(
         children='How late will your flight be?',
         style={
             'textAlign': 'left',
             'font-size': '22px',
-            'color': colors['text']
+            'color': colors['header']
         }
     ),
-
 # Background and Images
-# --------------
+# ----------------------------
 
 # Intro
     html.Div(html.P(['Late flights are a pain, ruining schedules and delaying plans. Use our app to help regain control over your time by planning for your flight delays before they happen.', html.Br(), html.Br()],

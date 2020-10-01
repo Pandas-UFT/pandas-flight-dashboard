@@ -1,5 +1,5 @@
-# Import dependencies
 import os
+
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
@@ -62,13 +62,16 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
         id='delays',
         figure={
             'data': [
-                {'x':df['airline_name'], 'y': df['departure_delay'], 'type':'box', 'name': 'Departure',
+                {'x':df['AIRLINE'], 'y': df['DEPARTURE_DELAY'], 'type':'box', 'name': 'Departure',
                 'marker' : { "color" : colors['plot']}},
-                {'x':df['airline_name'], 'y': df['arrival_delay'], 'type':'box', 'name': 'Arrival',
+                {'x':df['AIRLINE'], 'y': df['ARRIVAL_DELAY'], 'type':'box', 'name': 'Arrival',
                 'marker' : { "color" : colors['plot2']}}
             ],
             'layout' : {
-                'title': 'Departure and Arrival Delays by Airline',
+                'title': 'Delays by Airline',
+                'xaxis': {
+                    'title':'Airline'
+                },
                 'yaxis':{
                     'title':'Delay in Minutes'
                 },
@@ -78,11 +81,8 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
                     'color': colors['text']
                 }
             }
-        },
-        style={'padding-left':'3%', 
-            'padding-right':'1%'}
+        }
     ),
-
 
 # Initial Analysis Images
 

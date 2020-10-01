@@ -1,5 +1,5 @@
+# Import dependencies
 import os
-
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
@@ -7,8 +7,10 @@ from dash.dependencies import Input, Output
 import plotly.express as px
 import pandas as pd
 
-
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+
+# Build app
+# -------------------------------------------
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
@@ -16,12 +18,11 @@ server = app.server
 
 # Data source
 df = pd.read_csv('flights_complete_sample.csv')
-
 # Dict of colours
 colors = {
     'background': '#1B6F93',
     'text': '#7FDBFF',
-    'header': '#FFFFFF',
+    'header': '#D3D3D3',
     'paragraph': '#9BECFA',
     'plot': '#9BECFA',
     'plot2': '#B0B0B0'
@@ -93,6 +94,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background'], 'padding-l
 
 # Images
     html.Br(),
+    html.Br(),
 
     html.Img(id= 'dept_delay_by_month', 
             src='https://github.com/Pandas-UFT/Pandas/blob/master/figures/month_departure_delay.png?raw=true',
@@ -114,6 +116,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background'], 'padding-l
 
 # Machine Learning Images
     html.Br(),
+    html.Br(),
     html.H3(
         children='Arrival Delay',
         style={
@@ -124,32 +127,58 @@ app.layout = html.Div(style={'backgroundColor': colors['background'], 'padding-l
         }
     ),    
 
-    html.Div(html.P(['For our machine learning model we used a neural network. Its accuracy is depicted below.'],
+    html.Div(html.P(['For our machine learning model we used both a neural network model and a random forest model. Their accuracies are depicted below.'],
         style={
             'textAlign': 'left',
             'font-size': '18px',
             'color': colors['paragraph']
         })),
 
-    html.Img(id= 'ml_arrival_graph', 
-            src='https://github.com/Pandas-UFT/Pandas/blob/master/figures/arrival_predictions.png?raw=true',
-            style={'Align': 'center',
-                'width': '45%',
-                'padding-left':'30%', 
-                'padding-right':'30%'
+    html.Br(),
+
+    html.Img(id= 'ml_dnn', 
+            src='https://github.com/Pandas-UFT/Pandas/blob/master/figures/prediction_plot.PNG?raw=true',
+           style={'width': '45%',
+                'padding-left':'3%', 
+                'padding-right':'1%', 
+                'display': 'inline-block'
                 } 
             ),
+
+    html.Img(id= 'ml_rf', 
+            src='https://github.com/Pandas-UFT/Pandas/blob/master/figures/prediction_forest_plot.PNG?raw=true',
+           style={'width': '45%',
+                'padding-left':'3%', 
+                'padding-right':'1%',
+                'display': 'inline-block'
+                }
+            ), 
 # Dropdown boxes
 # ------------------------------------------
         html.Br(),
+        html.Br(),
 
         # Intro to Dropdown section
-        html.Div(html.P(['A random forest machine learning model was also used to evaluate the importance of each feature, for the purpose of creating this interactable menu. Test it out by entering your flight data and letting it predict how late your flight will arrive at its destination.'],
+        html.Div(html.P(['The random forest machine learning model was also used to evaluate the importance of each feature, for the purpose of creating this interactable menu. Test it out by entering your flight data and letting it predict how late your flight may arrive at its destination.'],
         style={
             'textAlign': 'left',
             'font-size': '18px',
             'color': colors['paragraph']
         })),
+
+        
+        
+        html.H3(
+            children='Enter Information Below:',
+            style={
+                'textAlign': 'left',
+                'color': colors['header'],            
+                'width': '45%', 
+                'display': 'inline-block'
+            }
+        ), 
+        
+        html.Br(),
 
             # Text row
             html.Div(children='Day of the Month', style={
@@ -158,7 +187,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background'], 'padding-l
                 'width': '45%', 
                 'display': 'inline-block'
             }), 
-            html.Div(children='Scheduled Arrival Time', style={
+            html.Div(children='Scheduled Arrival Time (four digits, no punctuation)', style={
                 'textAlign': 'left',
                 'color': colors['text'],
                 'width': '45%', 
@@ -219,19 +248,19 @@ app.layout = html.Div(style={'backgroundColor': colors['background'], 'padding-l
             # Input Row
             dcc.Dropdown(id="month",
                 options=[
-                    {'label': 'Choose', 'value': '0'},
-                    {'label': 'January', 'value': '1'},
-                    {'label': 'February','value': '2'},
-                    {'label': 'March', 'value': '3'},
-                    {'label': 'April', 'value': '4'},
-                    {'label': 'May', 'value': '5'},
-                    {'label': 'June', 'value': '6'},
-                    {'label': 'July', 'value': '7'},
-                    {'label': 'August', 'value': '8'},
-                    {'label': 'September', 'value': '9'},
-                    {'label': 'October', 'value': '10'},
-                    {'label': 'November', 'value': '11'},
-                    {'label': 'December', 'value': '12'}
+                    {'label': 'Choose', 'value': 0},
+                    {'label': 'January', 'value': 1},
+                    {'label': 'February','value': 2},
+                    {'label': 'March', 'value': 3},
+                    {'label': 'April', 'value': 4},
+                    {'label': 'May', 'value': 5},
+                    {'label': 'June', 'value': 6},
+                    {'label': 'July', 'value': 7},
+                    {'label': 'August', 'value': 8},
+                    {'label': 'September', 'value': 9},
+                    {'label': 'October', 'value': 10},
+                    {'label': 'November', 'value': 11},
+                    {'label': 'December', 'value': 12}
                 ],
                 value=0,
                 style={'width': '45%', 'display': 'inline-block'}
@@ -239,14 +268,14 @@ app.layout = html.Div(style={'backgroundColor': colors['background'], 'padding-l
             
             dcc.Dropdown(id="day_of_week",
                 options=[
-                    {'label': 'Choose', 'value': '0'},
-                    {'label': 'Monday', 'value': '1'},
-                    {'label': 'Tuesday', 'value': '2'},
-                    {'label': 'Wednesday', 'value': '3'},
-                    {'label': 'Thursday', 'value': '4'},
-                    {'label': 'Friday', 'value': '5'},
-                    {'label': 'Saturday', 'value': '6'},
-                    {'label': 'Sunday', 'value': '7'}
+                    {'label': 'Choose', 'value': 0},
+                    {'label': 'Monday', 'value': 1},
+                    {'label': 'Tuesday', 'value': 2},
+                    {'label': 'Wednesday', 'value': 3},
+                    {'label': 'Thursday', 'value': 4},
+                    {'label': 'Friday', 'value': 5},
+                    {'label': 'Saturday', 'value': 6},
+                    {'label': 'Sunday', 'value': 7}
                 ],
                 value=0,
                 style={'width': '45%', 'display': 'inline-block'}
@@ -282,7 +311,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background'], 'padding-l
             # Input Row
             dcc.Dropdown(id="airline",
                 options=[
-                    {'label': 'Choose', 'value': '0'},
+                    {'label': 'Choose', 'value': 0},
                     {'label': 'United Air Lines Inc.', 'value': 0.005348358975268569},
                     {'label': 'American Airlines Inc.', 'value': 0.008028661993477714},
                     {'label': 'US Airways Inc.', 'value': 0.00438836446916319},
@@ -303,6 +332,8 @@ app.layout = html.Div(style={'backgroundColor': colors['background'], 'padding-l
             ),
 
         # Output Div
+        html.Br(),
+        html.Br(),
         html.Div(id="prediction", style={
                 'textAlign': 'center',
                 'font-size': '22px',
@@ -338,6 +369,7 @@ def predict_delay(d, sa, dd, sd, m, dw, di, a):
     return "Your flight's arrival will be {} minutes delayed.".format(prediction)
     prediction = 0
 
-
+# Run app
 if __name__ == '__main__':
     app.run_server(debug=True)
+

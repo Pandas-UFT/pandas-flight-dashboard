@@ -58,7 +58,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background'], 'padding-l
             'color': colors['paragraph']
         })),
 
-        html.Div(html.P(['We analysed a dataset of millions of rows of data on flights in the United States during 2015 to determine if we could predict flight delays based on the given information. We visualized and evaluated the data to determine its spread based on various factors, as shown below.', html.Br(), html.Br()],
+        html.Div(html.P(['We analysed a dataset of billions of rows of data on flights in the United States during 2015 to determine if we could predict flight delays based on the given information. We visualized and evaluated the data to determine its spread based on various factors, as shown below.', html.Br(), html.Br()],
         style={
             'textAlign': 'left',
             'font-size': '18px',
